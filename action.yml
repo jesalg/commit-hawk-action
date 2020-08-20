@@ -1,13 +1,21 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'CommitHawk'
+description: 'Notify when watched file(s) change in a GitHub repo'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  slack_webhook_url:
+    description: 'Incoming webhook URL for Slack. This URL will be pinged when CommitHawk detects a change to the watched file(s).'
+    required: false
+  watching:
+    description: 'Dir or name of the files you want to watch e.g: path/to/some/dir/or/file'
     required: true
-    default: '1000'
+  branch:
+    description: 'Branch name you want to watch e.g: master'
+    required: false
+  ignore_commit_msg:
+    description: 'Ignore certain commits by the message e.g: Merge branch master'
+    required: false
 outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+  changes:
+    description: 'Commit SHAs containing relevant file changes if any'
 runs:
   using: 'node12'
   main: 'dist/index.js'
