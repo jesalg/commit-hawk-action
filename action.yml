@@ -4,18 +4,12 @@ inputs:
   slack_webhook_url:
     description: 'Incoming webhook URL for Slack. This URL will be pinged when CommitHawk detects a change to the watched file(s).'
     required: false
-  watching:
-    description: 'Dir or name of the files you want to watch e.g: path/to/some/dir/or/file'
-    required: true
-  branch:
-    description: 'Branch name you want to watch e.g: master'
-    required: false
-  ignore_commit_msg:
-    description: 'Ignore certain commits by the message e.g: Merge branch master'
+  slack_message:
+    description: 'Copy of the Slack message you want to send'
     required: false
 outputs:
-  changes:
-    description: 'Commit SHAs containing relevant file changes if any'
+  commits:
+    description: 'Commits containing relevant file changes'
 runs:
   using: 'node12'
   main: 'dist/index.js'
