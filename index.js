@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-
+const { IncomingWebhook } = require('@slack/webhook');
 const context = github.context;
 
 function toJSON(value, pretty=true) {
@@ -23,6 +23,7 @@ function debug(msg, obj = null) {
 
 function notifySlack(commits) {
   const slack_webhook_url = core.getInput('slack_webhook_url');
+  const webhook = new IncomingWebhook(slack_webhook_url);
   const attachments = commits.map((commit) => {
     return { 
       fallback: commit['message'],
@@ -37,8 +38,10 @@ function notifySlack(commits) {
   });
   info(`Ping: ${slack_webhook_url}`, attachments);
 
-  return new Promise((resolutionFunc,rejectionFunc) => {
-    resolutionFunc(attachments);
+  return webhook.send({
+    text: 'Contents of #{watching} were changed in:',
+    attachments: attachments, 
+    icon_emoji: ':eagle:'
   });
 }
 
