@@ -213,7 +213,7 @@ function notifySlack(commits) {
 async function getCommits() {
 	let commits;
 
-	debug('Getting commits...');
+	info('Getting commits...');
 
 	switch(context.eventName) {
 		case 'push':
@@ -238,7 +238,7 @@ async function run() {
         commits = commits.filter(c => c.distinct);
       }
     
-      debug('All Commits', commits);
+      info('All Commits', commits);
     
       core.setOutput('commits', commits);
 
