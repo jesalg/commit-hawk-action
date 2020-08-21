@@ -75,11 +75,12 @@ async function run() {
     
       debug('All Commits', commits);
     
+      core.setOutput('commits', commits);
+
       Promise.all(notifySlack(commits))
         .then(() => process.exitCode = 0)
         .catch(err => core.error(err) && (process.exitCode = 1));
     });
-    core.setOutput('commits', [commits]);
   } catch (error) {
     core.setFailed(error.message);
   }
