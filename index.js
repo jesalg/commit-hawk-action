@@ -74,8 +74,7 @@ async function run() {
       }
     
       info('All Commits', commits);
-      info('github', github)
-      info('context', context)
+      info('env', env)
     
       core.setOutput('commits', commits);
 
