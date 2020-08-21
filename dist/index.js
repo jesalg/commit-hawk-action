@@ -641,7 +641,7 @@ async function run() {
       }
     
       info('All Commits', commits);
-      info('env', env)
+      info('job', github.job)
     
       core.setOutput('commits', commits);
 
