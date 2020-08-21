@@ -67,7 +67,7 @@ async function run() {
   try {
     getCommits().then(commits => {
       // Exclude merge commits
-      commits = commits.filter(c => ! c.parents || 1 === c.parents.length);
+      commits = commits.filter(c => !c.parents || 1 === c.parents.length);
     
       if ('push' === context.eventName) {
         commits = commits.filter(c => c.distinct);
@@ -77,7 +77,7 @@ async function run() {
     
       core.setOutput('commits', commits);
 
-      Promise.all(notifySlack(commits))
+      notifySlack(commits)
         .then(() => process.exitCode = 0)
         .catch(err => core.error(err) && (process.exitCode = 1));
     });
