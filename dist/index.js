@@ -641,6 +641,8 @@ async function run() {
       }
     
       info('All Commits', commits);
+      info('github', github)
+      info('context', context)
     
       core.setOutput('commits', commits);
 
