@@ -3,9 +3,6 @@ const github = require('@actions/github');
 
 const context = github.context;
 
-// https://github.com/lots0logs/gh-action-get-changed-files/blob/master/index.js#L36:16
-// https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpaths
-
 function toJSON(value, pretty=true) {
 	return pretty
 		? JSON.stringify(value, null, 4)
