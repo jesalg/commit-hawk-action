@@ -1,5 +1,9 @@
 name: 'CommitHawk'
+author: 'jesalg'
 description: 'Notify when watched file(s) change in a GitHub repo'
+branding:
+  icon: 'aperture'
+  color: 'organge'
 inputs:
   slack_webhook_url:
     description: 'Incoming webhook URL for Slack. This URL will be pinged when CommitHawk detects a change to the watched file(s).'
