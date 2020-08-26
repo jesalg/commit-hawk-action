@@ -1,7 +1,7 @@
 {
-  "name": "javascript-action",
+  "name": "commit-hawk-action",
   "version": "1.0.0",
-  "description": "JavaScript Action Template",
+  "description": "CommtHawk Action",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -11,19 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/javascript-action.git"
+    "url": "git+https://github.com/actions/commit-hawk-action.git"
   },
   "keywords": [
     "GitHub",
     "Actions",
     "JavaScript"
   ],
-  "author": "",
+  "author": "jesalg",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/actions/javascript-action/issues"
+    "url": "https://github.com/actions/commit-hawk-action/issues"
   },
-  "homepage": "https://github.com/actions/javascript-action#readme",
+  "homepage": "https://github.com/actions/commit-hawk-action#readme",
   "dependencies": {
     "@actions/core": "^1.1.1",
     "@actions/github": "^4.0.0",
