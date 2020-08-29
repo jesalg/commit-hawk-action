@@ -12,8 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./
-      env:
-        ACTIONS_STEP_DEBUG: true
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         slack_webhook_url: 'http://ptsv2.com/t/9qarm-1598042741/post'
