@@ -5,6 +5,9 @@ branding:
   icon: 'aperture'
   color: 'orange'
 inputs:
+  token:
+    description: GitHub Personal Access Token
+    required: true    
   slack_webhook_url:
     description: 'Incoming webhook URL for Slack. This URL will be pinged when CommitHawk detects a change to the watched file(s).'
     required: false
