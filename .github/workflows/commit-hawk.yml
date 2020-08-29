@@ -2,7 +2,7 @@ name: "commit-hawk"
 on:
   push:
     branches:
-      - main
+      - string-match
     paths:
       - 'test'
 
@@ -12,6 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./
+      env:
+        ACTIONS_STEP_DEBUG: true
       with:
         slack_webhook_url: 'http://ptsv2.com/t/9qarm-1598042741/post'
         slack_message: 'Contents of the test file were changed on main'
