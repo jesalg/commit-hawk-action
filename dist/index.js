@@ -569,7 +569,8 @@ const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 const { IncomingWebhook } = __webpack_require__(736);
 const context = github.context;
-
+const repo    = context.payload.repository;
+const owner   = repo.owner;
 const gh = github.getOctokit(core.getInput('token'));
 const args = { owner: owner.name || owner.login, repo: repo.name };
 
