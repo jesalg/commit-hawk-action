@@ -620,20 +620,20 @@ function notifySlack(commits) {
 function fetchCommitData(commit) {
 	args.ref = commit.id || commit.sha;
 
-	debug('Calling gh.repos.getCommit() with args', args)
+	info('Calling gh.repos.getCommit() with args', args)
 
 	return gh.repos.getCommit(args);
 }
 
 async function processCommitData(result) {
-	debug('Processing API Response', result);
+	info('Processing API Response', result);
 
 	if (! result || ! result.data) {
 		return;
 	}
 
 	result.data.files.forEach(file => {
-    debug('Changed file:', file)
+    info('Changed file:', file)
 	});
 }
 
@@ -669,8 +669,7 @@ async function run() {
 
       Promise.all(commits.map(fetchCommitData))
         .then(data => Promise.all(data.map(processCommitData)))
-    
-      notifySlack(commits)
+        .then(notifySlack(commits))
         .then(() => process.exitCode = 0)
         .catch(err => core.error(err) && (process.exitCode = 1));
     });
