@@ -3,6 +3,9 @@ const github = require('@actions/github');
 const { IncomingWebhook } = require('@slack/webhook');
 const context = github.context;
 
+const gh = github.getOctokit(core.getInput('token'));
+const args = { owner: owner.name || owner.login, repo: repo.name };
+
 function toJSON(value, pretty=true) {
 	return pretty
 		? JSON.stringify(value, null, 4)
