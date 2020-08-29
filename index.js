@@ -1,6 +1,8 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const { IncomingWebhook } = require('@slack/webhook');
+const parseGitPatch = require('parse-git-patch')
+
 const context = github.context;
 const repo    = context.payload.repository;
 const owner   = repo.owner;
@@ -59,14 +61,15 @@ function fetchCommitData(commit) {
 }
 
 async function processCommitData(result) {
-	info('Processing API Response', result);
+	info('Processing API Response: ', result);
 
 	if (! result || ! result.data) {
 		return;
 	}
 
 	result.data.files.forEach(file => {
-    info('Changed file:', file)
+    const parsedPatch = parseGitPatch(file['patch'])
+    info('parsedPatch:', parsedPatch)
 	});
 }
 
