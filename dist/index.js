@@ -657,7 +657,7 @@ async function processCommitData(result) {
 async function getCommits() {
 	let commits;
 
-  info('Get yaml', getConfigFileContent('./commit-hawk.yml'));
+  info('Get yaml', getConfigFileContent('commit-hawk.yml'));
 	info('Getting commits...');
 
 	switch(context.eventName) {
