@@ -65,11 +65,12 @@ async function processCommitData(result) {
 	}
 
 	result.data.files.forEach(file => {
+    info('file', line)
     const patch = file['patch'];
     if (patch && patch.length > 0) {
       const lines = patch.split('@@').filter(String)[1].split(/\n|\t/).filter(e => String(e).trim()).filter(Boolean)
       lines.forEach(line => {
-        info('line:', line)
+        info('line', line)
       });
     }
 	});
