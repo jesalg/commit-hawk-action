@@ -565,6 +565,7 @@ module.exports = require("os");
 /***/ 104:
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
+const fs = __webpack_require__(747);
 const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 const { IncomingWebhook } = __webpack_require__(736);
