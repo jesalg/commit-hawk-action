@@ -67,8 +67,10 @@ async function processCommitData(result) {
 
 	result.data.files.forEach(file => {
     info('file:', file)
-    const parsedPatch = file['patch'];//parseGitPatch(file['patch'])
-    info('parsedPatch:', parsedPatch)
+    if (file && file['patch'].length > 0) {
+      const parsedPatch = parseGitPatch(file['patch'])
+      info('parsedPatch:', parsedPatch)
+    }
 	});
 }
 
