@@ -628,13 +628,12 @@ function fetchCommitData(commit) {
 }
 
 async function processCommitData(result) {
-	info('Processing API Response: ', result);
-
-	if (! result || ! result.data) {
+	if (!result || !result.data) {
 		return;
 	}
 
 	result.data.files.forEach(file => {
+    info('file:', file)
     const parsedPatch = parseGitPatch(file['patch'])
     info('parsedPatch:', parsedPatch)
 	});
