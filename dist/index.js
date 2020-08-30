@@ -593,6 +593,16 @@ function debug(msg, obj = null) {
 	core.debug(formatLogMessage(msg, obj));
 }
 
+function getConfigFileContent(configPath) {
+  if (!fs.existsSync(configPath)) {
+      throw new Error(`Configuration file '${configPath}' not found`);
+  }
+  if (!fs.lstatSync(configPath).isFile()) {
+      throw new Error(`'${configPath}' is not a file.`);
+  }
+  return fs.readFileSync(configPath, { encoding: 'utf8' });
+}
+
 function notifySlack(commits) {
   const slack_webhook_url = core.getInput('slack_webhook_url');
   const slack_message = core.getInput('slack_message');
@@ -646,6 +656,7 @@ async function processCommitData(result) {
 async function getCommits() {
 	let commits;
 
+  info('Get yaml', getConfigFileContent('./commit-hawk.yml'));
 	info('Getting commits...');
 
 	switch(context.eventName) {
