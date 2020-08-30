@@ -633,7 +633,7 @@ async function processCommitData(result) {
 
 	result.data.files.forEach(file => {
     const patch = file['patch'];
-    if (file && patch.length > 0) {
+    if (patch && patch.length > 0) {
       const lines = patch.split('@@').filter(String)[1].split(/\n|\t/).filter(e => String(e).trim()).filter(Boolean)
       lines.forEach(line => {
         info('line:', line)
