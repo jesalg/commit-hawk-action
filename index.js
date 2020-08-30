@@ -1,7 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const { IncomingWebhook } = require('@slack/webhook');
-const parseGitPatch = require('parse-git-patch')
 
 const context = github.context;
 const repo    = context.payload.repository;
@@ -67,9 +66,12 @@ async function processCommitData(result) {
 
 	result.data.files.forEach(file => {
     info('file:', file)
-    if (file && file['patch'].length > 0) {
-      const parsedPatch = parseGitPatch(file['patch'])
-      info('parsedPatch:', parsedPatch)
+    const patch = file['patch'];
+    if (patch.length > 0) {
+      const lines = patch.split('@@').filter(String)[1].split(/\n|\t/).filter(e => String(e).trim()).filter(Boolean)
+      lines.forEach(line => {
+        info('line:', line)
+      });
     }
 	});
 }

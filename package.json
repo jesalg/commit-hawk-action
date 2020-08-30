@@ -27,8 +27,7 @@
   "dependencies": {
     "@actions/core": "^1.2.5",
     "@actions/github": "^4.0.0",
-    "@slack/webhook": "^5.0.3",
-    "parse-git-patch": "^1.0.7"
+    "@slack/webhook": "^5.0.3"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.22.3",
