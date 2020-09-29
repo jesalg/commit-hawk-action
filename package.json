@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/actions/commit-hawk-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.5",
+    "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
     "@slack/webhook": "^5.0.3"
   },
