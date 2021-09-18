@@ -21,17 +21,23 @@ Actions can be setup to run conditionally when a specific file(s) on a particula
 The `paths` keywords accept glob patterns that use the * and ** wildcard characters to match more than one path name. For more information, see the [documentation](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpaths).
 
 ```yaml
-name: "commit-hawk"
+name: hawk
 on:
   push:
     branches:
       - main
     paths:
       - '/some/important/file'
+
 jobs:
-  commit-hawk:
-    uses: actions/commit-hawk-action@v1
-    with:
-      slack_webhook_url: 'https://slack.webhook'
-      slack_message: 'Contents of some important file were changed on master'
+  hawk:
+    name: hawk
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: CommitHawk
+      uses: jesalg/commit-hawk-action@v1.0-beta  
+      with:
+        slack_webhook_url: 'https://hooks.slack.com/services/XYZ'
+        slack_message: 'Contents of some important file were changed on main'
 ```
