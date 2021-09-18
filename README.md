@@ -36,7 +36,7 @@ jobs:
     
     steps:
     - name: CommitHawk
-      uses: jesalg/commit-hawk-action@v1.0-beta  
+      uses: jesalg/commit-hawk-action@v1.1
       with:
         slack_webhook_url: 'https://hooks.slack.com/services/XYZ'
         slack_message: 'Contents of some important file were changed on main'
